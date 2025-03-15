@@ -1,6 +1,6 @@
 
 body {
-    background-image: url("wavy-black-white-background.jpg");
+    background-image: url("bookimage");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -16,7 +16,7 @@ body {
 
 
 .container {
-    background-color: rgba(207, 207, 207, 0.9);
+    background-color: rgba(94, 75, 75, 0.9);
     padding: 20px;
     border-radius: 10px;
     width: 350px;
@@ -29,11 +29,11 @@ input {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #d1d0d0;
+    border: 1px solid #4b4545;
     border-radius: 5px;
     font-size: 14px;
     box-sizing: border-box;
-    background-color: rgb(228, 226, 226);
+    background-color: rgb(195, 190, 190);
     color: rgb(0, 0, 0);
 }
 
@@ -41,7 +41,7 @@ input {
 button {
     width: 100%;
     padding: 12px;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(56, 48, 48);
     color: white;
     border: none;
     border-radius: 5px;
@@ -112,11 +112,11 @@ header {
 
 
 .book-container {
-    background: rgba(207, 207, 207, 0.9);
+    background: rgba(122, 101, 101, 0.9);
     padding: 20px;
     margin-top: 80px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
     text-align: center;
     width: 220px;
 }
@@ -133,7 +133,7 @@ header {
 
 .book p {
     font-size: 14px;
-    color: #555;
+    color: #fffefe;
     margin: 5px 0;
 }
 
