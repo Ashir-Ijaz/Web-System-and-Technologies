@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css" >
+    <title>GPA Calculator</title>
+
+</head>
+<body>
+
+    <h2>GPA CALCULATOR</h2>
+
+    <table>
+        <tr>
+            <th>Subjects</th>
+            <th>Grades</th>
+            <th>Remarks</th>
+        </tr>
+        <tr>
+            <td>Web Engineering</td>
+            <td><input type="text" class="grade"></td>
+            <td class="remark"></td>
+        </tr>
+        <tr>
+            <td>Web Engineering Lab</td>
+            <td><input type="text" class="grade"></td>
+            <td class="remark"></td>
+        </tr>
+        <tr>
+            <td>Software Engineering</td>
+            <td><input type="text" class="grade"></td>
+            <td class="remark"></td>
+        </tr>
+        <tr>
+            <td>Mathematics</td>
+            <td><input type="text" class="grade"></td>
+            <td class="remark"></td>
+        </tr>
+        <tr>
+            <td>Marketing</td>
+            <td><input type="text" class="grade"></td>
+            <td class="remark"></td>
+        </tr>
+        <tr>
+            <td>Management Sciences</td>
+            <td><input type="text" class="grade"></td>
+            <td class="remark"></td>
+        </tr>
+        <tr>
+            <td><strong>Your GPA is:</strong></td>
+            <td id="gpaResult" colspan="2">-</td>
+        </tr>
+    </table>
+
+    <button onclick="calculateGPA()"><strong>Calculate</strong></button>
+
+    <script>
+        function calculateGPA() {
+            let grades = document.querySelectorAll(".grade");
+            let remarks = document.querySelectorAll(".remark");
+            let gpaResult = document.getElementById("gpaResult");
+            
+            let gradePoints = {
+                "A": 4.0, "A-": 3.7, "B+": 3.3, "B": 3.0, "B-": 2.7,
+                "C+": 2.3, "C": 2.0, "C-": 1.7, "D+": 1.3, "D": 1.0, "F": 0.0
+            };
+            
+            let totalPoints = 0;
+            let count = 0;
+            
+            grades.forEach((input, index) => {
+                let grade = input.value.toUpperCase().trim();
+                if (gradePoints.hasOwnProperty(grade)) {
+                    totalPoints += gradePoints[grade];
+                    count++;
+                    remarks[index].innerText = (grade === "F") ? "Fail" : "Pass";
+                } else {
+                    remarks[index].innerText = "Invalid";
+                }
+            });
+
+            let gpa = (count > 0) ? (totalPoints / count).toFixed(2) : "N/A";
+            gpaResult.innerText = gpa;
+        }
+    </script>
+
+</body>
+</html>
