@@ -1,19 +1,327 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jQuery Demo</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .box {
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        h3 {
+            color: #3498db;
+            margin-top: 0;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        
+        .demo-div {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            margin: 20px 0;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .important {
+            font-weight: 600;
+            color: #e74c3c;
+        }
+        
+        .test {
+            background-color: #f1c40f;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            background: linear-gradient(to right, #2ecc71, #27ae60);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:hover {
+            background: linear-gradient(to right, #27ae60, #2ecc71);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        a {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 12px;
+            background-color: #ecf0f1;
+            text-decoration: none;
+            color: #2980b9;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        a:hover {
+            background-color: #d6e0e4;
+            color: #1a5276;
+            transform: translateY(-2px);
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+        }
+        
+        #dimensions-result, #click-result {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 3px solid #3498db;
+        }
+        
+        #measure-div {
+            border: 10px solid rgba(0, 0, 0, 0.2) !important;
+            padding: 20px !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* Animation for page load */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .box {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .box:nth-child(2) { animation-delay: 0.1s; }
+        .box:nth-child(3) { animation-delay: 0.2s; }
+        .box:nth-child(4) { animation-delay: 0.3s; }
+        .box:nth-child(5) { animation-delay: 0.4s; }
+        .box:nth-child(6) { animation-delay: 0.5s; }
+        .box:nth-child(7) { animation-delay: 0.6s; }
+        .box:nth-child(8) { animation-delay: 0.7s; }
+        .box:nth-child(9) { animation-delay: 0.8s; }
+        .box:nth-child(10) { animation-delay: 0.9s; }
+    </style>
 </head>
 <body>
-    <div id="test">Test Div</div>
-    <div class="test">Test Class Div</div>
-    <div>Regular Div</div>
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
+    <h1>jQuery Interactive Demo</h1>
 
-    <script src="script.js"></script>
+    <div class="container">
+        <div class="box">
+            <h3>1. Hide all links</h3>
+            <p>Click the button to hide all links on the page:</p>
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+            <button id="hide-links">Hide All Links</button>
+        </div>
+
+        <div class="box">
+            <h3>2. Hide element with ID</h3>
+            <p>Click the button to hide the element with id="test":</p>
+            <div id="test" style="padding: 10px; background-color: #e8f4f8; border-radius: 5px; border-left: 4px solid #3498db;">
+                This element has id="test"
+            </div>
+            <button id="hide-id">Hide #test</button>
+        </div>
+
+        <div class="box">
+            <h3>3. Hide elements with class</h3>
+            <p>Click the button to hide all elements with class="test":</p>
+            <div class="test">Test class element 1</div>
+            <div class="test">Test class element 2</div>
+            <button id="hide-class">Hide .test</button>
+        </div>
+
+        <div class="box">
+            <h3>4. Double-click to hide links</h3>
+            <p>Double-click on any link below to hide it:</p>
+            <a href="#" class="dbl-click">Double-click me 1</a>
+            <a href="#" class="dbl-click">Double-click me 2</a>
+            <a href="#" class="dbl-click">Double-click me 3</a>
+        </div>
+
+        <div class="box">
+            <h3>5. Animate div properties</h3>
+            <div class="demo-div" id="animate-div"></div>
+            <button id="animate-properties">Animate Properties</button>
+        </div>
+
+        <div class="box">
+            <h3>6. Add multiple classes</h3>
+            <a href="#" id="add-classes-link">Add classes to me</a>
+            <button id="add-classes">Add Classes</button>
+        </div>
+
+        <div class="box">
+            <h3>7. Set height and width</h3>
+            <div class="demo-div" id="resize-div"></div>
+            <button id="set-dimensions">Set to 500px</button>
+        </div>
+
+        <div class="box">
+            <h3>8. Get full dimensions</h3>
+            <div class="demo-div" id="measure-div">
+                With border and padding
+            </div>
+            <button id="get-dimensions">Get Outer Height/Width</button>
+            <div id="dimensions-result"></div>
+        </div>
+
+        <div class="box">
+            <h3>9. Click event with on()</h3>
+            <p>Click on any link below:</p>
+            <a href="#" class="click-event">Click me 1</a>
+            <a href="#" class="click-event">Click me 2</a>
+            <a href="#" class="click-event">Click me 3</a>
+            <div id="click-result"></div>
+        </div>
+
+        <div class="box">
+            <h3>10. Animate movement</h3>
+            <div class="demo-div" id="move-div"></div>
+            <button id="move-right">Move Right</button>
+        </div>
+    </div>
+
+    <footer style="text-align: center; margin-top: 40px; padding: 20px; color: #7f8c8d; font-size: 14px;">
+        <p>jQuery Interactive Demo &copy; 2023</p>
+    </footer>
+
+    <!-- Include jQuery from CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Add a reset button to each box
+            $(".box").append('<button class="reset-btn" style="background: linear-gradient(to right, #e74c3c, #c0392b);">Reset</button>');
+            
+            // Reset functionality
+            $(".reset-btn").click(function() {
+                location.reload();
+            });
+            
+            // 1. Hide all <a> elements
+            $("#hide-links").click(function() {
+                $("a").hide(300);
+                $(this).text("Links Hidden!");
+            });
+
+            // 2. Hide element with id="test"
+            $("#hide-id").click(function() {
+                $("#test").hide(400);
+                $(this).text("Element Hidden!");
+            });
+
+            // 3. Hide all elements with class="test"
+            $("#hide-class").click(function() {
+                $(".test").hide(500);
+                $(this).text("Elements Hidden!");
+            });
+
+            // 4. Hide all <a> elements with double-click
+            $("a.dbl-click").dblclick(function() {
+                $(this).fadeOut(400);
+            });
+
+            // 5. Animate div to set opacity, height, width
+            $("#animate-properties").click(function() {
+                $("#animate-div").animate({
+                    opacity: 0.2,
+                    height: "600px",
+                    width: "600px"
+                }, 1000, function() {
+                    $(this).css("background", "linear-gradient(135deg, #9b59b6, #3498db)");
+                });
+                $(this).text("Animated!");
+            });
+
+            // 6. Add multiple classes to an element
+            $("#add-classes").click(function() {
+                $("#add-classes-link").addClass("important test");
+                $(this).text("Classes Added!");
+            });
+
+            // 7. Set height and width of div to 500px
+            $("#set-dimensions").click(function() {
+                $("#resize-div").height(500).width(500);
+                $(this).text("Size Set!");
+            });
+
+            // 8. Get height including padding and border
+            $("#get-dimensions").click(function() {
+                var outerHeight = $("#measure-div").outerHeight(true);
+                var outerWidth = $("#measure-div").outerWidth(true);
+                $("#dimensions-result").html(
+                    "<strong>Outer Height:</strong> " + outerHeight + "px<br>" +
+                    "<strong>Outer Width:</strong> " + outerWidth + "px"
+                ).hide().fadeIn(400);
+            });
+
+            // 9. Attach click event using on()
+            $(document).on("click", "a.click-event", function() {
+                $("#click-result").text("You clicked: " + $(this).text())
+                    .hide().fadeIn(300);
+                return false; // Prevent default link behavior
+            });
+
+            // 10. Animate to move div 300px to the right
+            $("#move-right").click(function() {
+                $("#move-div").animate({
+                    left: "300px"
+                }, 800, "swing", function() {
+                    $(this).css("background", "linear-gradient(135deg, #e74c3c, #f39c12)");
+                });
+                $(this).text("Moved!");
+            });
+        });
+    </script>
 </body>
 </html>
