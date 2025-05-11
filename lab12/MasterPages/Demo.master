@@ -1,0 +1,19 @@
+<%@ Master Language="C#" AutoEventWireup="true" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Master Page Demo</title>
+    <link href="../Styles/site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder id="head" runat="server" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>Header Goes Here</header>
+        <section id="MainContent">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </section>
+        <aside>Click Here</aside>
+        <footer>Click Here</footer>
+    </form>
+</body>
+</html>

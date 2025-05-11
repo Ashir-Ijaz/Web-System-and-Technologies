@@ -1,0 +1,16 @@
+header, footer, aside {
+    background-color: lightgray;
+    padding: 10px;
+    margin: 5px;
+    align-items: center;
+    text-align: center;
+    margin: 20px;
+}
+h2,p{
+    align-items: center;
+    text-align: center;
+}
+
+section#MainContent {
+    padding: 15px;
+}
